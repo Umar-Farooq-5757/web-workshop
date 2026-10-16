@@ -1,6 +1,7 @@
 export interface BaseBlock {
   id: string;
   type: "heading" | "paragraph" | "image" | "button" | "container";
+  content:string;
   styles: {
     color?: string;
     backgroundColor?: string;
