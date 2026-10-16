@@ -10,9 +10,9 @@ function App() {
   return (
     <>
       <Header />
-      {page.blocks.map((block,idx)=>{
+      {page.blocks.map((block)=>{
         return (
-          <BlockRenderer block={block}/>
+          <BlockRenderer key={block.id} block={block}/>
         )
       })}
     </>

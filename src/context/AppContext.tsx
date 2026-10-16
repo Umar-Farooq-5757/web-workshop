@@ -15,16 +15,21 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
     {
       id: "321",
       type: "heading",
-      content:'this is headinglevel1',
+      content: {
+        text: "this is heading level 2",
+        level: 2,
+      },
       styles: {
         color: "red",
-        fontSize: "30px",
+        // fontSize: "30px",
       },
     },
     {
       id: "1234",
       type: "paragraph",
-      content:'this is paragraph',
+      content: {
+        text: "this is paragraph",
+      },
       styles: {
         color: "green",
         fontSize: "17px",
