@@ -1,7 +1,15 @@
 import "./App.css";
+import Header from "./components/Header";
+import { useAppContext } from "./context/AppContext";
 
 function App() {
-  return <>web workshop</>;
+  const { developer } = useAppContext();
+  console.log(developer)
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default App;
