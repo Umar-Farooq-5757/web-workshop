@@ -4,7 +4,7 @@ import { useAppContext } from "./context/AppContext";
 
 function App() {
   const { developer } = useAppContext();
-  console.log(developer)
+  console.log(developer);
   return (
     <>
       <Header />
