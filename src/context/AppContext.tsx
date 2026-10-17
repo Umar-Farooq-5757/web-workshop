@@ -3,6 +3,8 @@ import type { BaseBlock, Page } from "../types/builder";
 
 interface AppContextType {
   developer: string;
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (value: boolean) => void;
   page: Page;
 }
 
@@ -11,6 +13,7 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [developer] = useState("umarfarooq");
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const blocks: BaseBlock[] = [
     {
       id: "321",
@@ -35,6 +38,17 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
         fontSize: "17px",
       },
     },
+    {
+      id: "12345",
+      type: "image",
+      content: {
+        src: "https://user-cdn.hackclub-assets.com/01a14423-1e9e-7221-9fe5-7d6344dc6acf/journal-1792144514325.png",
+      },
+      styles: {
+        color: "green",
+        fontSize: "17px",
+      },
+    },
   ];
   const page: Page = {
     id: "123",
@@ -46,6 +60,8 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
     <AppContext.Provider
       value={{
         developer,
+        isSidebarOpen,
+        setIsSidebarOpen,
         page,
       }}>
       {children}

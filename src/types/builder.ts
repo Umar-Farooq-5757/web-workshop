@@ -33,7 +33,7 @@ export interface ImageBlock {
   type: "image";
   content: {
     src: string;
-    alt: string;
+    alt?: string;
   };
   styles: BaseStyles;
 }
@@ -43,7 +43,7 @@ export interface ButtonBlock {
   type: "button";
   content: {
     text: string;
-    url: string;
+    url?: string;
   };
   styles: BaseStyles;
 }
