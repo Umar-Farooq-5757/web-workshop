@@ -62,7 +62,7 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
         },
         styles: {
           color: "green",
-          fontSize: "17px",
+          fontSize: "17px",textAlign:'center'
         },
       },
       {
