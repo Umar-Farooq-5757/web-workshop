@@ -4,3 +4,7 @@
 * {
   font-family: "IBM Plex Sans", sans-serif;
 }
+
+.element-block:hover {
+  outline: 2px dashed blue;
+}

@@ -1,59 +1,111 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
-import type { BaseBlock, Page } from "../types/builder";
+import {
+  createContext,
+  useContext,
+  useState,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
+} from "react";
+import type { BaseBlock, BaseStyles, Page } from "../types/builder";
+
+interface SelectedBlockUpdate {
+  content?: Partial<
+    | { text: string; level?: 1 | 2 | 3 | 4 | 5 | 6 }
+    | { text: string }
+    | { src: string; alt?: string }
+    | { text: string; url?: string }
+  >;
+  styles?: Partial<BaseStyles>;
+}
 
 interface AppContextType {
   developer: string;
   isSidebarOpen: boolean;
-  setIsSidebarOpen: (value: boolean) => void;
+  setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
+  selectedBlock: BaseBlock | null;
+  setSelectedBlock: Dispatch<SetStateAction<BaseBlock | null>>;
   page: Page;
+  setPage: Dispatch<SetStateAction<Page>>;
+  activateBlock: (blockId: string) => void;
+  updateSelectedBlock: (update: SelectedBlockUpdate) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
+
 export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [developer] = useState("umarfarooq");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
-  const blocks: BaseBlock[] = [
-    {
-      id: "321",
-      type: "heading",
-      content: {
-        text: "this is heading level 2",
-        level: 2,
-      },
-      styles: {
-        color: "red",
-        // fontSize: "30px",
-      },
-    },
-    {
-      id: "1234",
-      type: "paragraph",
-      content: {
-        text: "this is paragraph",
-      },
-      styles: {
-        color: "green",
-        fontSize: "17px",
-      },
-    },
-    {
-      id: "12345",
-      type: "image",
-      content: {
-        src: "https://user-cdn.hackclub-assets.com/01a14423-1e9e-7221-9fe5-7d6344dc6acf/journal-1792144514325.png",
-      },
-      styles: {
-        color: "green",
-        fontSize: "17px",
-      },
-    },
-  ];
-  const page: Page = {
-    id: "123",
+  const [selectedBlock, setSelectedBlock] = useState<BaseBlock | null>(null);
+
+  const [page, setPage] = useState<Page>(() => ({
+    id: crypto.randomUUID(),
     title: "this is page title",
-    blocks,
+    blocks: [
+      {
+        id: crypto.randomUUID(),
+        type: "heading",
+        content: {
+          text: "this is heading level 2",
+          level: 2,
+        },
+        styles: {
+          color: "red",
+        },
+      },
+      {
+        id: crypto.randomUUID(),
+        type: "paragraph",
+        content: {
+          text: "this is paragraph",
+        },
+        styles: {
+          color: "green",
+          fontSize: "17px",
+        },
+      },
+      {
+        id: crypto.randomUUID(),
+        type: "image",
+        content: {
+          src: "https://user-cdn.hackclub-assets.com/01a14423-1e9e-7221-9fe5-7d6344dc6acf/journal-1792144514325.png",
+        },
+        styles: {},
+      },
+    ],
+  }));
+
+  const activateBlock = (blockId: string) => {
+    const block =
+      page.blocks.find((currentBlock) => currentBlock.id === blockId) ?? null;
+
+    setSelectedBlock(block);
+  };
+
+  const updateSelectedBlock = (update: SelectedBlockUpdate) => {
+    if (!selectedBlock) return;
+
+    const updatedBlock: BaseBlock = {
+      ...selectedBlock,
+      content: {
+        ...selectedBlock.content,
+        ...(update.content ?? {}),
+      },
+      styles: {
+        ...selectedBlock.styles,
+        ...(update.styles ?? {}),
+      },
+    } as BaseBlock;
+
+    setSelectedBlock(updatedBlock);
+
+    setPage((currentPage) => ({
+      ...currentPage,
+      blocks: currentPage.blocks.map((block) =>
+        block.id === updatedBlock.id ? updatedBlock : block,
+      ),
+    }));
   };
 
   return (
@@ -62,7 +114,12 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
         developer,
         isSidebarOpen,
         setIsSidebarOpen,
+        selectedBlock,
+        setSelectedBlock,
         page,
+        setPage,
+        activateBlock,
+        updateSelectedBlock,
       }}>
       {children}
     </AppContext.Provider>

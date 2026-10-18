@@ -1,5 +1,6 @@
 import type React from "react";
 import type { BaseBlock } from "../types/builder";
+import { useAppContext } from "../context/AppContext";
 
 interface BlockRendererProps {
   block: BaseBlock;
@@ -7,6 +8,7 @@ interface BlockRendererProps {
 
 const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
   const { styles } = block;
+  const { activateBlock } = useAppContext();
 
   const commonStyles: React.CSSProperties = {
     color: styles.color,
@@ -40,6 +42,8 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
 
       return (
         <Tag
+          onClick={() => activateBlock(block.id)}
+          className="element-block"
           style={{
             ...commonStyles,
             ...headingDefaults[level],
@@ -55,6 +59,8 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
     case "paragraph": {
       return (
         <p
+          onClick={() => activateBlock(block.id)}
+          className="element-block"
           style={{
             fontSize: "1rem",
             lineHeight: 1.6,
@@ -70,6 +76,8 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
     case "image": {
       return (
         <img
+          onClick={() => activateBlock(block.id)}
+          className="element-block"
           src={block.content.src}
           alt={block.content.alt}
           style={{
@@ -87,6 +95,8 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
     case "button": {
       return (
         <a
+          onClick={() => activateBlock(block.id)}
+          className="element-block"
           href={block.content.url}
           style={{
             display: "inline-block",
@@ -106,13 +116,6 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
       return null;
     }
   }
-
-  return (
-    <div>
-      block will be rendered here
-      {/* <p>{block.content.text}</p> */}
-    </div>
-  );
 };
 
 export default BlockRenderer;
