@@ -8,17 +8,20 @@ function App() {
   const { isSidebarOpen, page } = useAppContext();
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-[#111] text-white">
       <aside
-        className={`border-r-2 border-[#ddd] transition-all duration-500 ease-in-out overflow-hidden shrink-0 ${isSidebarOpen ? "w-60" : "w-0"}`}>
+        className={`border-r-2 border-[#222] transition-all duration-500 ease-in-out overflow-hidden shrink-0 ${isSidebarOpen ? "w-60" : "w-0"}`}>
         <Sidebar />
       </aside>
       <main className="flex-1 min-w-0">
         <Header />
         <div className="py-2 px-10">
-          {page?.blocks?.map((block) => (
-            <BlockRenderer key={block.id} block={block} />
-          ))}
+          <div>Your webpage</div>
+          <div className="border border-[#444] mt-4 p-3">
+            {page?.blocks?.map((block) => (
+              <BlockRenderer key={block.id} block={block} />
+            ))}
+          </div>
         </div>
       </main>
     </div>

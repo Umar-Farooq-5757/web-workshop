@@ -40,7 +40,7 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   const [selectedBlock, setSelectedBlock] = useState<BaseBlock | null>(null);
 
   const [page, setPage] = useState<Page>(() => ({
-    id: crypto.randomUUID(),
+    id: 'page-id',
     title: "this is page title",
     blocks: [
       {
@@ -79,7 +79,6 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   const activateBlock = (blockId: string) => {
     const block =
       page.blocks.find((currentBlock) => currentBlock.id === blockId) ?? null;
-
     setSelectedBlock(block);
   };
 

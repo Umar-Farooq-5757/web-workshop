@@ -11,15 +11,15 @@ const Sidebar: React.FC = () => {
     selectedBlock?.type === "button";
 
   return (
-    <div className="py-3 px-4">
-      <h2 className="font-semibold text-xl">Editor</h2>
-      <div className="h-0.5 w-full bg-[#ddd] my-3"></div>
+    <div className="py-3">
+      <h2 className="font-semibold text-xl px-4">Editor</h2>
+      <div className="h-0.5 w-full bg-[#222] my-3"></div>
       {!selectedBlock ? (
-        <div className="font-semibold text-[#aaa] flex items-center justify-center text-center h-100">
+        <div className="font-semibold text-[#666] flex items-center justify-center text-center h-100">
           Click on an element/block to select it.
         </div>
       ) : (
-        <>
+        <section className="px-4">
           <div className="my-5 space-y-5">
             {/* ==================================
                 Text
@@ -36,7 +36,7 @@ const Sidebar: React.FC = () => {
                       },
                     })
                   }
-                  className="w-full h-40 border-2 border-[#ddd] rounded-sm py-1 px-2 outline-none resize-none"
+                  className="w-full h-40 border-2 border-[#333] rounded-sm py-1 px-2 outline-none resize-none"
                 />
               </div>
             )}
@@ -83,12 +83,12 @@ const Sidebar: React.FC = () => {
                   },
                 })
               }
-              className="w-full border-2 border-[#ddd] rounded-sm py-1 px-2 outline-none"
+              className="w-full border-2 border-[#333] rounded-sm py-1 px-2 outline-none"
               type="text"
             />
             </div>
           </div>
-        </>
+        </section>
       )}
     </div>
   );

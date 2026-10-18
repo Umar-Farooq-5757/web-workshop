@@ -42,7 +42,10 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
 
       return (
         <Tag
-          onClick={() => activateBlock(block.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            activateBlock(block.id);
+          }}
           className="element-block"
           style={{
             ...commonStyles,
@@ -59,7 +62,10 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
     case "paragraph": {
       return (
         <p
-          onClick={() => activateBlock(block.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            activateBlock(block.id);
+          }}
           className="element-block"
           style={{
             fontSize: "1rem",
@@ -76,7 +82,10 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
     case "image": {
       return (
         <img
-          onClick={() => activateBlock(block.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            activateBlock(block.id);
+          }}
           className="element-block"
           src={block.content.src}
           alt={block.content.alt}
@@ -95,7 +104,10 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
     case "button": {
       return (
         <a
-          onClick={() => activateBlock(block.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            activateBlock(block.id);
+          }}
           className="element-block"
           href={block.content.url}
           style={{
