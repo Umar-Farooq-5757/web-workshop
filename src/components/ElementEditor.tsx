@@ -16,8 +16,8 @@ const ElementEditor: React.FC = () => {
           Click on an element/block to select it.
         </div>
       ) : (
-        <section className="px-4">
-          <div className="my-5 space-y-5">
+        <section className="px-2 py-5">
+          <div className="space-y-5">
             {/* ==================================
                 Text
                 ================================== */}
@@ -35,6 +35,31 @@ const ElementEditor: React.FC = () => {
                   }
                   className="w-full h-40 border-2 border-[#333] rounded-sm py-1 px-2 outline-none resize-none"
                 />
+              </div>
+            )}
+            {/* ==================================
+                Heading Level
+                ================================== */}
+            {selectedBlock.type === "heading" && (
+              <div className="space-y-1">
+                <p className="font-semibold">Heading Level</p>
+                <select
+                  className="w-full border-2 bg-[#222] border-[#333] rounded-sm py-1 px-2 outline-none"
+                  value={selectedBlock.content.level}
+                  onChange={(e) =>
+                    updateSelectedBlock({
+                      content: {
+                        level: Number(e.target.value) as 1 | 2 | 3 | 4 | 5 | 6,
+                      },
+                    })
+                  }>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
               </div>
             )}
             {/* ==================================
