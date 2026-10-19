@@ -1,5 +1,7 @@
 # Web Workshop
 
+![Screenshot](/public/journey/screenshot10.PNG)
+
 Web Workshop is a WordPress-inspired, block-based web app that lets users create and customize websites without coding.
 
 > Note for the reviewer: In the beginning of this project, my commits are a bit inconsistent, because I didn't knew you have to commit every hour or two. I commited after every feature.
@@ -10,3 +12,4 @@ Web Workshop is a WordPress-inspired, block-based web app that lets users create
 - Vite (React + tsx)
 - TailwindCSS for styling
 - `react-icons` for icons
+- TypeScript for type-safety
