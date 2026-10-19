@@ -24,6 +24,8 @@ interface AppContextType {
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
   selectedBlock: BaseBlock | null;
   setSelectedBlock: Dispatch<SetStateAction<BaseBlock | null>>;
+  selectedEditor: "layout" | "element";
+  setSelectedEditor: Dispatch<SetStateAction<"layout" | "element">>;
   page: Page;
   setPage: Dispatch<SetStateAction<Page>>;
   activateBlock: (blockId: string) => void;
@@ -38,9 +40,12 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   const [developer] = useState("umarfarooq");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [selectedBlock, setSelectedBlock] = useState<BaseBlock | null>(null);
+  const [selectedEditor, setSelectedEditor] = useState<"layout" | "element">(
+    "element",
+  );
 
   const [page, setPage] = useState<Page>(() => ({
-    id: 'page-id',
+    id: "page-id",
     title: "this is page title",
     blocks: [
       {
@@ -62,7 +67,8 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
         },
         styles: {
           color: "green",
-          fontSize: "17px",textAlign:'center'
+          fontSize: "17px",
+          textAlign: "center",
         },
       },
       {
@@ -115,6 +121,8 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
         setIsSidebarOpen,
         selectedBlock,
         setSelectedBlock,
+        selectedEditor,
+        setSelectedEditor,
         page,
         setPage,
         activateBlock,

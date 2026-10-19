@@ -6,7 +6,7 @@ export interface BaseStyles {
   padding?: string;
   margin?: string;
   width?: string;
-  borderRadius?: string;
+  borderRadius?: number;
 }
 
 export interface HeadingBlock {
