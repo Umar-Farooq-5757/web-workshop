@@ -8,7 +8,7 @@ interface BlockRendererProps {
 
 const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
   const { styles } = block;
-  const { activateBlock } = useAppContext();
+  const { activateBlock, setSelectedEditor } = useAppContext();
 
   const commonStyles: React.CSSProperties = {
     color: styles.color,
@@ -45,6 +45,7 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
           onClick={(e) => {
             e.stopPropagation();
             activateBlock(block.id);
+            setSelectedEditor("element");
           }}
           className="element-block"
           style={{
@@ -65,6 +66,7 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
           onClick={(e) => {
             e.stopPropagation();
             activateBlock(block.id);
+            setSelectedEditor("element");
           }}
           className="element-block"
           style={{
@@ -85,6 +87,7 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
           onClick={(e) => {
             e.stopPropagation();
             activateBlock(block.id);
+            setSelectedEditor("element");
           }}
           className="element-block"
           src={block.content.src}
@@ -107,6 +110,7 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
           onClick={(e) => {
             e.stopPropagation();
             activateBlock(block.id);
+            setSelectedEditor("element");
           }}
           className="element-block"
           href={block.content.url}

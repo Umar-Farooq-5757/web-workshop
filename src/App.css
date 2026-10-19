@@ -8,3 +8,32 @@
 .element-block:hover {
   outline: 2px dashed lightblue;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(139, 139, 139);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #29272B;
+}
+
+.no-scroll-wheel {
+  scrollbar-width: none;
+}
+
+.no-scroll-wheel::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}

@@ -5,11 +5,12 @@ import LayoutEditor from "./LayoutEditor";
 
 const Sidebar: React.FC = () => {
   const { selectedEditor, setSelectedEditor } = useAppContext();
+
   return (
-    <div className="py-3">
+    <div className="h-full overflow-y-auto py-3 w-60">
       <h2 className="font-semibold text-xl px-4">Editor</h2>
       <div className="h-0.5 w-full bg-[#222] my-3"></div>
-      <div className="flex items-center justify-evenly gap-">
+      <div className="flex items-center justify-evenly">
         <button
           onClick={() => setSelectedEditor("element")}
           className={`${selectedEditor === "element" && "border-b-3"} cursor-pointer hover:opacity-70`}>
@@ -21,8 +22,10 @@ const Sidebar: React.FC = () => {
           Layout
         </button>
       </div>
-      {selectedEditor === "element" && <ElementEditor />}
-      {selectedEditor === "layout" && <LayoutEditor />}
+      <div className="mt-3">
+        {selectedEditor === "element" && <ElementEditor />}
+        {selectedEditor === "layout" && <LayoutEditor />}
+      </div>
     </div>
   );
 };

@@ -8,14 +8,14 @@ function App() {
   const { isSidebarOpen, page } = useAppContext();
 
   return (
-    <div className="flex min-h-screen bg-[#111] text-white">
+    <div className="flex h-screen overflow-hidden bg-[#111] text-white">
       <aside
-        className={`border-r-2 border-[#222] transition-all duration-500 ease-in-out overflow-hidden shrink-0 ${isSidebarOpen ? "w-60" : "w-0"}`}>
+        className={`border-r-2 border-[#222] transition-all duration-500 ease-in-out shrink-0 ${isSidebarOpen ? "w-60" : "w-0"} overflow-hidden`}>
         <Sidebar />
       </aside>
-      <main className="flex-1 min-w-0">
+      <main className="flex-1 min-w-0 overflow-y-auto">
         <Header />
-        <div className="py-2 px-10">
+        <div className="py-3 px-10">
           <div>Your webpage</div>
           <div className="border border-[#444] mt-4 p-3">
             {page?.blocks?.map((block) => (

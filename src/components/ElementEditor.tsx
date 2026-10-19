@@ -33,7 +33,7 @@ const ElementEditor: React.FC = () => {
                       },
                     })
                   }
-                  className="w-full h-40 border-2 border-[#333] rounded-sm py-1 px-2 outline-none resize-none"
+                  className="w-full h-40 border-2 border-[#333] bg-[#222] rounded-sm py-1 px-2 outline-none resize-none"
                 />
               </div>
             )}
@@ -108,7 +108,7 @@ const ElementEditor: React.FC = () => {
                       },
                     })
                   }
-                  className="w-full border-2 border-[#333] rounded-sm py-1 px-2 outline-none"
+                  className="w-full border-2 border-[#333] bg-[#222] rounded-sm py-1 px-2 outline-none"
                   type="text"
                 />
               </div>
@@ -119,26 +119,26 @@ const ElementEditor: React.FC = () => {
             {hasText && (
               <div className="space-y-1">
                 <p className="font-semibold">Text Align</p>
-                <div className="bg-black flex rounded-md py-1 px-1">
+                <div className="bg-[#222] flex rounded-md py-1 px-1">
                   <button
                     onClick={() =>
                       updateSelectedBlock({ styles: { textAlign: "left" } })
                     }
-                    className={`grow py-1 text-sm rounded-md ${selectedBlock.styles.textAlign === "left" && "bg-[#222]"}`}>
+                    className={`grow py-1 text-sm rounded-md ${selectedBlock.styles.textAlign === "left" && "bg-[#111]"}`}>
                     Left
                   </button>
                   <button
                     onClick={() =>
                       updateSelectedBlock({ styles: { textAlign: "center" } })
                     }
-                    className={`grow py-1 text-sm rounded-md ${selectedBlock.styles.textAlign === "center" && "bg-[#222]"}`}>
+                    className={`grow py-1 text-sm rounded-md ${selectedBlock.styles.textAlign === "center" && "bg-[#111]"}`}>
                     Center
                   </button>
                   <button
                     onClick={() =>
                       updateSelectedBlock({ styles: { textAlign: "right" } })
                     }
-                    className={`grow py-1 text-sm rounded-md ${selectedBlock.styles.textAlign === "right" && "bg-[#222]"}`}>
+                    className={`grow py-1 text-sm rounded-md ${selectedBlock.styles.textAlign === "right" && "bg-[#111]"}`}>
                     Right
                   </button>
                 </div>
@@ -159,7 +159,7 @@ const ElementEditor: React.FC = () => {
                     },
                   })
                 }
-                className="w-full border-2 border-[#333] rounded-sm py-1 px-2 outline-none"
+                className="w-full border-2 border-[#333] bg-[#222] rounded-sm py-1 px-2 outline-none"
                 type="text"
               />
             </div>
@@ -178,7 +178,7 @@ const ElementEditor: React.FC = () => {
                     },
                   })
                 }
-                className="w-full border-2 border-[#333] rounded-sm py-1 px-2 outline-none"
+                className="w-full border-2 border-[#333] bg-[#222] rounded-sm py-1 px-2 outline-none"
                 type="text"
               />
             </div>
@@ -197,7 +197,7 @@ const ElementEditor: React.FC = () => {
                     },
                   })
                 }
-                className="w-full border-2 border-[#333] rounded-sm py-1 px-2 outline-none"
+                className="w-full border-2 border-[#333] bg-[#222] rounded-sm py-1 px-2 outline-none"
                 type="text"
               />
             </div>
