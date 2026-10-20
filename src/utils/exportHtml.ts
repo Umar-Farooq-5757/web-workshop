@@ -19,8 +19,12 @@ export const stylesToString = (styles: BaseStyles): string => {
         /[A-Z]/g,
         (letter) => `-${letter.toLowerCase()}`,
       );
+      const cssValue =
+        property === "borderRadius" && typeof value === "number"
+          ? `${value}px`
+          : value;
 
-      return `${cssProperty}:${value}`;
+      return `${cssProperty}:${cssValue}`;
     })
     .join(";");
 };

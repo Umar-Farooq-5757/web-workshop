@@ -42,7 +42,7 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   const [developer] = useState("umarfarooq");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [selectedBlock, setSelectedBlock] = useState<BaseBlock | null>(null);
-  const [isExportHtmlOpen, setIsExportHtmlOpen] = useState<boolean>(true);
+  const [isExportHtmlOpen, setIsExportHtmlOpen] = useState<boolean>(false);
   const [selectedEditor, setSelectedEditor] = useState<"layout" | "element">(
     "element",
   );

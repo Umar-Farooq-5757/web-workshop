@@ -3,6 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { useAppContext } from "../context/AppContext";
 import { generatePageHtml } from "../utils/exportHtml";
 import { FiCopy } from "react-icons/fi";
+import toast, { Toaster } from "react-hot-toast";
 
 const ExportHtml: React.FC = () => {
   const { setIsExportHtmlOpen, page } = useAppContext();
@@ -23,14 +24,22 @@ const ExportHtml: React.FC = () => {
             <IoClose className="hover:rotate-90 transition-all" />
           </button>
         </div>
-        <button className="flex items-center gap-2 bg-[#222] w-fit border border-[#333] py-1 px-3 cursor-pointer hover:bg-white hover:text-black"><FiCopy/><span>Copy</span></button>
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(htmlContent);
+            toast.success("HTML copied to clipboard");
+          }}
+          className="flex items-center gap-2 bg-[#222] w-fit border border-[#333] py-1 px-3 cursor-pointer hover:bg-white hover:text-black">
+          <FiCopy />
+          <span>Copy</span>
+        </button>
         <div className="flex-1 bg-[#222] my-3 overflow-auto p-4 border border-[#333]">
           <pre className="font-mono whitespace-pre-wrap wrap-break-words">
             <code>{htmlContent}</code>
           </pre>
         </div>
-
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
