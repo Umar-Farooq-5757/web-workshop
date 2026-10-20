@@ -13,3 +13,4 @@ Web Workshop is a WordPress-inspired, block-based web app that lets users create
 - TailwindCSS for styling
 - `react-icons` for icons
 - TypeScript for type-safety
+

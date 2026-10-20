@@ -16,7 +16,12 @@ function App() {
       <main className="flex-1 min-w-0 overflow-y-auto">
         <Header />
         <div className="py-3 px-10">
-          <div>Your webpage</div>
+          <div className="flex items-center justify-between">
+            <p>Your Webpage:</p>
+            <button className="bg-[#222] border border-[#333] py-1 px-3 cursor-pointer hover:opacity-70">
+              Export HTML
+            </button>
+          </div>
           <div className="border border-[#444] mt-4 p-3">
             {page?.blocks?.map((block) => (
               <BlockRenderer key={block.id} block={block} />
