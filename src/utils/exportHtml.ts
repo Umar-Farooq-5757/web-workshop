@@ -1,4 +1,4 @@
-import type { BaseBlock, BaseStyles } from "../types/builder";
+import type { BaseBlock, BaseStyles, Page } from "../types/builder";
 
 export const escapeHtml = (value: string): string => {
   return value
@@ -66,4 +66,46 @@ const renderBlock = (block: BaseBlock): string => {
     default:
       return "";
   }
+};
+
+export const generatePageHtml = (page: Page): string => {
+  const title = escapeHtml(page.title);
+  const body = page.blocks.map(renderBlock).join("\n");
+
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${title}</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 32px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        color: #111;
+        background-color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+${body}
+  </body>
+</html>`;
+};
+
+export const downloadPageHtml = (page: Page) => {
+  const html = generatePageHtml(page);
+  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${page.title || "website"}.html`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  URL.revokeObjectURL(url);
 };

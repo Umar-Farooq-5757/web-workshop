@@ -12,7 +12,7 @@ const ElementEditor: React.FC = () => {
   return (
     <>
       {!selectedBlock ? (
-        <div className="font-semibold text-[#666] flex items-center justify-center text-center h-100">
+        <div className="font-semibold text-[#666] px-5 flex items-center justify-center text-center h-100">
           Click on an element/block to select it.
         </div>
       ) : (

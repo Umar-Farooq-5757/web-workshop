@@ -1,7 +1,0 @@
-2b7a09637da2371d85dc8ba7a8f85ae3b1181105|2026-10-18T14:35:35+05:00|basic properties of elements can be modified now (text,color,fontsize,etc)
-7c784721b865f9b7e516725e115a8d0db1b83c71|2026-10-17T11:56:50+05:00|create sidebar
-79ee6c72ff0a933561006b17757046bc68ef6bd1|2026-10-16T22:44:48+05:00|update json structure (separate for each html element)
-ba50751a60df27d472c98908734c25b81b756beb|2026-10-16T20:25:24+05:00|create BlockRenderer.tsx for dynamically rendering elements
-1faf13ce954660c284ba7b15cbb148bcd189d5fd|2026-10-16T16:07:37+05:00|define basic json structure of blocks and page
-855a38fc4e7db0efc1e38de5d3484293d6266327|2026-10-16T12:08:32+05:00|add Header.tsx and setup AppContext
-344fd95faacad519e34e8b6c59e7796b104a5b6d|2026-10-16T10:47:22+05:00|initial commit

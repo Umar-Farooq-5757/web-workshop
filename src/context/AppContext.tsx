@@ -30,6 +30,8 @@ interface AppContextType {
   setPage: Dispatch<SetStateAction<Page>>;
   activateBlock: (blockId: string) => void;
   updateSelectedBlock: (update: SelectedBlockUpdate) => void;
+  isExportHtmlOpen: boolean;
+  setIsExportHtmlOpen: (value: boolean) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -40,6 +42,7 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   const [developer] = useState("umarfarooq");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [selectedBlock, setSelectedBlock] = useState<BaseBlock | null>(null);
+  const [isExportHtmlOpen, setIsExportHtmlOpen] = useState<boolean>(true);
   const [selectedEditor, setSelectedEditor] = useState<"layout" | "element">(
     "element",
   );
@@ -127,6 +130,8 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
         setPage,
         activateBlock,
         updateSelectedBlock,
+        isExportHtmlOpen,
+        setIsExportHtmlOpen,
       }}>
       {children}
     </AppContext.Provider>

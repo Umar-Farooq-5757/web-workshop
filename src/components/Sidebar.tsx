@@ -7,7 +7,7 @@ const Sidebar: React.FC = () => {
   const { selectedEditor, setSelectedEditor } = useAppContext();
 
   return (
-    <div className="h-full overflow-y-auto py-3 w-60">
+    <div className="h-full overflow-y-auto py-3 w-70">
       <h2 className="font-semibold text-xl px-4">Editor</h2>
       <div className="h-0.5 w-full bg-[#222] my-3"></div>
       <div className="flex items-center justify-evenly">
