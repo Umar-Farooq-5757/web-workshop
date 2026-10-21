@@ -3,14 +3,22 @@ import BlockRenderer from "./components/BlockRenderer";
 import ExportHtml from "./components/ExportHtml";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import SpookyOverlay from "./components/SpookyOverlay";
 import { useAppContext } from "./context/AppContext";
 
 function App() {
-  const { isSidebarOpen, page, isExportHtmlOpen, setIsExportHtmlOpen } =
-    useAppContext();
+  const {
+    isSidebarOpen,
+    page,
+    isExportHtmlOpen,
+    setIsExportHtmlOpen,
+    isSpookyMode,
+  } = useAppContext();
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#111] text-white">
+    <div
+      style={{ fontFamily: isSpookyMode ? "Creepster" : "" }}
+      className="flex h-screen overflow-hidden bg-[#111] text-white">
       <aside
         className={`border-r-2 border-[#222] transition-all duration-500 ease-in-out shrink-0 ${isSidebarOpen ? "w-70" : "w-0"} overflow-hidden`}>
         <Sidebar />
@@ -34,6 +42,7 @@ function App() {
         </div>
       </main>
       {isExportHtmlOpen && <ExportHtml />}
+      <SpookyOverlay />
     </div>
   );
 }

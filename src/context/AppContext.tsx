@@ -20,6 +20,8 @@ interface SelectedBlockUpdate {
 
 interface AppContextType {
   developer: string;
+  isSpookyMode: boolean;
+  setIsSpookyMode: (value: boolean) => void;
   isSidebarOpen: boolean;
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
   selectedBlock: BaseBlock | null;
@@ -40,6 +42,7 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [developer] = useState("umarfarooq");
+  const [isSpookyMode, setIsSpookyMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [selectedBlock, setSelectedBlock] = useState<BaseBlock | null>(null);
   const [isExportHtmlOpen, setIsExportHtmlOpen] = useState<boolean>(false);
@@ -49,38 +52,37 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
 
   const [page, setPage] = useState<Page>(() => ({
     id: "page-id",
-    title: "this is page title",
+    title: "page title here",
     blocks: [
       {
         id: crypto.randomUUID(),
         type: "heading",
         content: {
-          text: "this is heading level 2",
+          text: "Umar Farooq",
           level: 2,
         },
         styles: {
-          color: "red",
+          color: "green",
         },
       },
       {
         id: crypto.randomUUID(),
         type: "paragraph",
         content: {
-          text: "this is paragraph",
+          text: "Web Developer & Cyber Security Enthusiast",
         },
         styles: {
-          color: "green",
           fontSize: "17px",
-          textAlign: "center",
+          textAlign: "left",
         },
       },
       {
         id: crypto.randomUUID(),
         type: "image",
         content: {
-          src: "https://user-cdn.hackclub-assets.com/01a14423-1e9e-7221-9fe5-7d6344dc6acf/journal-1792144514325.png",
+          src: "/journey/screenshot11.PNG",
         },
-        styles: {},
+        styles: { padding: "20px" },
       },
     ],
   }));
@@ -120,6 +122,8 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
     <AppContext.Provider
       value={{
         developer,
+        isSpookyMode,
+        setIsSpookyMode,
         isSidebarOpen,
         setIsSidebarOpen,
         selectedBlock,
