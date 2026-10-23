@@ -25,3 +25,19 @@ Web Workshop is a WordPress-inspired, block-based web app that lets users create
 
 ## Inspiration:
 This web-app is inspired by wordpress
+
+## AI usage declaration:
+I've used AI to write `utils/exportHtml.ts`. And I was stuck in `BlockRenderer.tsx`, because I was using tailwind and it was resetting the styles (heading levels were not working, also the margin and padding were set to 0 by tailwind), so I took help from AI.
+
+## Screenshots
+![Screenshot](/public/journey/screenshot1.PNG)
+![Screenshot](/public/journey/screenshot2.PNG)
+![Screenshot](/public/journey/screenshot3.PNG)
+![Screenshot](/public/journey/screenshot4.PNG)
+![Screenshot](/public/journey/screenshot5.PNG)
+![Screenshot](/public/journey/screenshot6.PNG)
+![Screenshot](/public/journey/screenshot7.PNG)
+![Screenshot](/public/journey/screenshot8.PNG)
+![Screenshot](/public/journey/screenshot9.PNG)
+![Screenshot](/public/journey/screenshot10.PNG)
+![Screenshot](/public/journey/screenshot11.PNG)
